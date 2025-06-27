@@ -1,4 +1,19 @@
 class HTMLNode:
+    void_elems = ["area",
+                  "base",
+                  "br",
+                  "col",
+                  "embed",
+                  "hr",
+                  "img",
+                  "input",
+                  "link",
+                  "meta",
+                  "param",
+                  "source",
+                  "track",
+                  "wbr"]
+
     def __init__(self, tag=None, value=None, children=None, props=None):
         self.tag = tag
         self.value = value
@@ -30,6 +45,8 @@ class LeafNode(HTMLNode):
             raise ValueError("All leaf nodes must have a value.")
         elif self.tag == None:
             return self.value
+        elif self.tag in HTMLNode.void_elems:
+            return f"<{self.tag}{self.props_to_html()} />{self.value}"
         else:
             return f"<{self.tag}{self.props_to_html()}>{self.value}</{self.tag}>"
 
