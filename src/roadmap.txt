@@ -1,0 +1,9 @@
+Roadmap for markdown_to_html_node function:
+
+1. split markdown into blocks (from md_to_blocks import markdown_to_blocks)
+2. for each block:
+    1. store blocktype of block (from blocktype import BlockType and block_to_block_type)
+    2. convert block to textnodes (from raw_md_to_text_nodes import text_to_textnodes)
+    3. convert textnodes to htmlnodes (from text_to_html import text_node_to_html_node)
+    4. wrap leafnodes with parentnode based on block type (on-site or custom function)
+3. return a parentnode with div as the tag and the parentnodes as the children

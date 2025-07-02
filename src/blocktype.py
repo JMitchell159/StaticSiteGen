@@ -21,7 +21,7 @@ def block_to_block_type(markdown_block):
         split = markdown_block.split("\n")
         count = 0
         for i in range(len(split)):
-            if split[i][:3] == f"{i + 1}. ":
+            if split[i].startswith(f"{i + 1}. "):
                 count += 1
             else:
                 break
