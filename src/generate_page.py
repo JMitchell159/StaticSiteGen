@@ -6,11 +6,9 @@ import os
 def generate_page(from_path, template_path, dest_path):
     from_file = open(from_path, "r")
     from_content = from_file.read()
-    print(from_content)
 
     template_file = open(template_path, "r")
     template_content = template_file.read()
-    print(template_content)
 
     title = extract_title(from_content)
     content = markdown_to_html_node(from_content).to_html()
