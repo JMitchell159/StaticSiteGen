@@ -13,7 +13,7 @@ def list_files_recursive(dir):
                 files.append(f"{dorf}/{f}")
     return files
 
-def generate_pages_recursive(dir_path_content, template_path, dest_dir_path):
+def generate_pages_recursive(dir_path_content, template_path, dest_dir_path, basepath):
     md_files = list_files_recursive(dir_path_content)
     for md in md_files:
-        generate_page(f"{dir_path_content}/{md}", template_path, f"{dest_dir_path}/{md[:-3]}.html")
+        generate_page(f"{dir_path_content}/{md}", template_path, f"{dest_dir_path}/{md[:-3]}.html", basepath)

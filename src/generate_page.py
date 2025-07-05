@@ -4,7 +4,7 @@ from extract_title import extract_title
 import os
 import shutil
 
-def generate_page(from_path, template_path, dest_path):
+def generate_page(from_path, template_path, dest_path, basepath):
     from_file = open(from_path, "r")
     from_content = from_file.read()
 
@@ -14,7 +14,7 @@ def generate_page(from_path, template_path, dest_path):
     title = extract_title(from_content)
     content = markdown_to_html_node(from_content).to_html()
 
-    template_content = template_content.replace("{{ Title }}", title).replace("{{ Content }}", content)
+    template_content = template_content.replace("{{ Title }}", title).replace("{{ Content }}", content).replace("href=\"/", f"href=\"{basepath}").replace("src=\"/", f"src=\"{basepath}")
 
     temp_list = dest_path.split("/")
     removed = []
